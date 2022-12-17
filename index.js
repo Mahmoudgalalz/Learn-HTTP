@@ -1,11 +1,27 @@
 const input=document.getElementById("input")
 const btn=document.getElementById('btn');
 const text=document.getElementById('text')
+const kindBtn=document.getElementById('kindBtn');
+let kind="cat";
+
+
+function ChangeTheHTTPAnimal(){
+    if(kindBtn.textContent!="Cats")
+    {
+        kindBtn.textContent="Cats"
+        kind="cat"
+    }
+    else{
+        kindBtn.textContent="Dog"
+        kind="dog"
+    }
+}
 
 function search(){
     const code=input.value;
     getData(code);
-    const img=`https://http.cat/${code}`
+    console.log(kind);
+    const img=`https://http.${kind}/${code}.jpg`
     putData(img);
 }
 
@@ -31,4 +47,6 @@ function putData(img){
 function textPut(data){
     text.innerHTML=data;
 }
+
+kindBtn.addEventListener('click',ChangeTheHTTPAnimal)
 btn.addEventListener('click',search);
